@@ -1,9 +1,6 @@
 import timezone
-from sqlalchemy.orm DeclarativeBase, mapped_column
-
-class Base(DeclarativeBase):
-    pass
-
+from sqlalchemy.orm  mapped_column
+from models.base import Base
 
 class USER(Base):
 
