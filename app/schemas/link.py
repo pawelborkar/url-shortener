@@ -10,7 +10,7 @@ class LinkBase(BaseModel):
     url: HttpUrl
 
 
-class LinkRequest(LinkBase):
+class LinkCreate(LinkBase):
     pass
 
 

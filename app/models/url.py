@@ -1,17 +1,16 @@
 from datetime import datetime
-from sqlalchemy import String, DateTime, func 
+from sqlalchemy import String, DateTime, func
 from sqlalchemy.orm import mapped_column, Mapped
 from models.base import Base
-
 
 
 class URL(Base):
     __tablename__ = "urls"
 
-    id: Mapped[int] | None = mapped_column(primary_key=True)
-    short_code: Mapped[str] = mapped_column(String(8), unique=True)
+    id: Mapped[int]
+    short_code: Mapped[str] = mapped_column(String(8), index=True, unique=True)
     url: Mapped[str] = mapped_column(
-        String(32000)
+        String(2048),  # 2048 is the Pydantic's default for HttpUrl type
     )  # Explicitly setting arbitary value for the destination URL in order to avoid pollution
     # user: Mapped[int]: USER.id
     count: Mapped[int] = mapped_column()
