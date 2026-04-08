@@ -1,18 +1,32 @@
 [project]
-name = "yay"
-version = "0.1.0"
+name = "cutlet"
+version = "0.2.0"
 author = "Pawel Borkar <pawel@duck.com>"
 homepage = "https://yay.pawel.in"
 description = "URL shortener for developers"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "asyncpg>=0.31.0",
     "fastapi[standard-no-fastapi-cloud-cli]>=0.135.2",
     "pydantic>=2.12.5",
+    "python-dotenv>=1.2.2",
     "sqlalchemy>=2.0.48",
 ]
 
 [dependency-groups]
 dev = [
+    "commitizen>=4.13.9",
+    "pre-commit>=4.5.1",
     "ruff>=0.15.9",
 ]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "v$version"
+version_scheme = "semver2"
+version_provider = "pep621"
+version = "0.0.1"
+major_version_zero = true
+update_changelog_on_bump = true
+bump_message = "bump: $current_version -> $new_version"
